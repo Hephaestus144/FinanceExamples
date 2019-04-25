@@ -25,9 +25,10 @@ public class Curve
 		
 		for(int i = 0; i < this.tenors.length; i++)
 		{
-			if (tenors[i] < tenor)
+			if (tenors[i] <= tenor)
 			{
 				leftTenor = tenors[i];
+				leftRate = rates[i];
 			}
 			else
 			{
@@ -39,9 +40,10 @@ public class Curve
 		{
 			for(int i = this.tenors.length - 1; i >= 0; i--)
 			{
-				if(tenors[i] > tenor)
+				if(tenors[i] >= tenor)
 				{
 					rightTenor = tenors[i];
+					rightRate = rates[i];
 				}
 				else
 				{
