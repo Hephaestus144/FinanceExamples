@@ -63,4 +63,11 @@ public class Curve
 		
 		return ((rightRate - leftRate)/(rightTenor - leftTenor))*(rightTenor - tenor) + leftRate;
 	}
+	
+	
+	public double DiscountFactor(double tenor)
+	{
+		double rate = this.InterpolateRates(tenor);
+		return Math.exp(-rate * tenor);
+	}
 }
