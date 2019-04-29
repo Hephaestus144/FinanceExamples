@@ -1,5 +1,9 @@
 package MarketData;
 
+import java.util.Arrays;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+
 public class Curve 
 {
 	// properties
@@ -22,6 +26,15 @@ public class Curve
 		double leftRate = -1;
 		double rightTenor = -1;
 		double rightRate = -1;
+		
+		if (DoubleStream.of(this.tenors).anyMatch(x -> x == tenor))
+		{
+			int tenorIndex = IntStream.range(0, this.tenors.length)
+								.filter(i -> tenor == this.tenors[(int) i])
+								.findFirst()
+								.orElse(-1);
+			return this.rates[tenorIndex];
+		}
 		
 		for(int i = 0; i < this.tenors.length; i++)
 		{
